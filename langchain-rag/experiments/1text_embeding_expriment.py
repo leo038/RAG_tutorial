@@ -9,7 +9,7 @@ import numpy as np
 
 ##更方便的解决办法是使用huggingface的国内镜像
 os.environ['HF_ENDPOINT'] = 'https://hf-mirror.com'
-
+bge_embeddings = HuggingFaceBgeEmbeddings(model_name="BAAI/bge-large-zh-v1.5")
 ##定义embedding使用的模型
 model_name = "BAAI/bge-large-zh-v1.5"
 model_kwargs = {'device': 'cuda'}
