@@ -4,7 +4,7 @@ document transform的主要作用是对文档进行分割， 组合， 过滤等
 一般对文档进行分割用的最多， 可参考 libs/langchain/langchain/text_splitter.py
 """
 
-with open("data/test.txt") as f:
+with open("../../data/test.txt") as f:
     read_file = f.read()
 
 #####################1 简单的基于字符的分割###################################

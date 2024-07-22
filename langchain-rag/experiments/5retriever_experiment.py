@@ -11,7 +11,7 @@ from langchain.vectorstores import Chroma
 from langchain.embeddings import HuggingFaceBgeEmbeddings
 
 # 加载txt文档
-loader = TextLoader(file_path='./data/test.txt', encoding="utf-8")
+loader = TextLoader(file_path='../../data/test.txt', encoding="utf-8")
 raw_documents = loader.load()
 
 # 分割文本
@@ -30,8 +30,6 @@ docs = vectore_data.similarity_search(query, k=1)  # 注意： 文本分割的�
 print(f"query:{query}, 从向量数据库中找到的最相关的文档片段：")
 print(len(docs), docs)
 
-
-
 ## 普通的检索器
 bge_retriever = vectore_data.as_retriever(search_kwargs={"k": 1})  # k控制检索多少条最相关的，
 res = bge_retriever.get_relevant_documents(query=query)
@@ -39,6 +37,7 @@ print(f"query:{query}, 检索到的内容：{res}")
 
 from langchain.retrievers.multi_query import MultiQueryRetriever
 from langchain_community.llms import Ollama
+
 llm = Ollama(model="llama3:8b")
 retriever_from_llm = MultiQueryRetriever.from_llm(
     retriever=bge_retriever, llm=llm
@@ -46,5 +45,3 @@ retriever_from_llm = MultiQueryRetriever.from_llm(
 
 unique_docs = retriever_from_llm.get_relevant_documents(query=query)
 print(f"带llm的检索器检索到的内容：{unique_docs}")
-
-

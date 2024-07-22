@@ -9,7 +9,7 @@ from langchain.vectorstores import Chroma
 from langchain.embeddings import HuggingFaceBgeEmbeddings
 
 # 加载txt文档
-loader = TextLoader(file_path='./data/test.txt', encoding="utf-8")
+loader = TextLoader(file_path='../../data/test.txt', encoding="utf-8")
 raw_documents = loader.load()
 
 # 分割文本
